@@ -74,6 +74,7 @@ namespace TravelProject
                 CommentContent = this.txtComment.Text.Trim()
             };
             _uaMgr.LeaveComment(comment);
+            this.txtComment.Text = null;
             InitComment(_articleID);
         }
         private void InitComment(Guid articleID)
@@ -81,8 +82,7 @@ namespace TravelProject
             List<Comment> commentList = _uaMgr.GetCommentList(articleID);
             this.rptComment.DataSource = commentList;
             this.rptComment.DataBind();
-            this.ltlCommentCount.Text = commentList.Count.ToString() + "則留言";
-            this.txtComment.Text = null;
+            this.ltlCommentCount.Text = commentList.Count.ToString() + "則留言";            
         }
         private void InitLike(Guid articleID)
         {
